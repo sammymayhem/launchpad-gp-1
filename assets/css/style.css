@@ -1,3 +1,10 @@
+:root {
+    --night-primary: #14213d;
+    --night-secondary: #e5e5e5;
+    --tab-secondary: #d32f2f;
+}
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,8 +12,8 @@
 }
 
 body {
-    background-color: #14213d;
-    color: #e5e5e5;
+    background-color: var(--night-primary);
+    color: var(--night-secondary);
     text-align: center;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -16,5 +23,23 @@ header {
     color: #e5e5e5;
 }
 
+/* .tabs {
+    .tab {
+      a {
+        color: $custom-color;
+        &.active {color: $custom-color;}
+        &:hover {color: $custom-color;}
+        &:focus {
+          background-color: rgba($custom-color, 0.1);
+          &.active{
+                      background-color: rgba($custom-color, 0.1);
+                  }
+        }
+      }
+    }
+    .indicator {background-color: $custom-color;}
+  } */
 
-
+.tabs-content {
+    height: 900px;
+}
