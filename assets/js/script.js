@@ -9,7 +9,13 @@ var launches = {
 }
 
 function launch(description, launchDate, crew, payloadCustomers){
-  this.description = description;
+  if (description === null){
+    this.description = "CONFIDENTIAL";
+  }
+  else{
+    this.description = description;
+  }
+  
   this.launchDate = launchDate;
   this.crew = crew;
   this.payloadCustomers = payloadCustomers;
@@ -38,8 +44,9 @@ function getLaunchApi() {
       replaceCrewIDWithName();
       replacePayloadIDWithName();
 
-      renderLaunchData();
-
+      renderLaunchData("past");
+      renderLaunchData("current")
+      renderLaunchData("future")
     });
 }
 
@@ -97,11 +104,49 @@ function replacePayloadIDWithName() {
     });
 }
 
-// FUNCTION TO BUILD NEXT!!!!!
-function renderLaunchData(){
-  console.log("Build me up before you go go");
-}
+function renderLaunchData(elemID){
+  var mainContainerEl = $('#' + elemID + '-launch-info');
 
+  var launchInfo = launches[elemID];
+
+  console.log(launchInfo);
+  
+  var countDownEl = $('<h2>');
+  var countDownTimerEl = $('<p>');
+  countDownEl.text("Count Down To Launch:");
+  countDownTimerEl.text(launchInfo.launchDate);
+
+  var descriptionTagEl = $('<h4>');
+  var descriptionEl = $('<p>');
+  descriptionTagEl.text("Description:");
+  descriptionEl.text(launchInfo.description);
+  
+  var launchDateTagEl = $('<h4>');
+  var launchDateEl = $('<p>');
+  launchDateTagEl.text("Launch Date:");
+  launchDateEl.text(launchInfo.launchDate);
+
+  var crewTagEl = $('<h4>');
+  var crewEl = $('<p>');
+  crewTagEl.text("Crew:");
+  crewEl.text(launchInfo.crew.join('\n'));
+
+  var payloadTagEl = $('<h4>');
+  var payloadEl = $('<p>');
+  payloadTagEl.text("Payload Customers:");
+  payloadEl.text(launchInfo.payloadCustomers.join('\n'));
+
+  mainContainerEl.append(countDownEl);
+  mainContainerEl.append(countDownTimerEl);
+  mainContainerEl.append(descriptionTagEl);
+  mainContainerEl.append(descriptionEl);
+  mainContainerEl.append(launchDateTagEl);
+  mainContainerEl.append(launchDateEl);
+  mainContainerEl.append(crewTagEl);
+  mainContainerEl.append(crewEl);
+  mainContainerEl.append(payloadTagEl);
+  mainContainerEl.append(payloadEl);
+}
 
 var currentMoment = moment().unix();
 getLaunchApi();
