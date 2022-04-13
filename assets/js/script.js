@@ -97,9 +97,48 @@ function replacePayloadIDWithName() {
     });
 }
 
-// FUNCTION TO BUILD NEXT!!!!!
-function renderLaunchData(){
-  console.log("Build me up before you go go");
+function renderLaunchData(launch){
+  var mainContainerEl = $('#main-container');
+  
+  var countDownEl = $('<h2>');
+  var countDownTimerEl = $('<p>');
+  countDownEl.text("Count Down To Launch:");
+  countDownTimerEl.text("05:25:19");
+
+  var descriptionTagEl = $('<h4>');
+  var descriptionEl = $('<p>');
+  descriptionTagEl.text("Description:");
+  descriptionEl.text("launch.description");
+  
+
+  var launchDateTagEl = $('<h4>');
+  var launchDateEl = $('<p>');
+  launchDateTagEl.text("Launch Date:");
+  launchDateEl.text("launch.launchDate");
+
+  var crewTagEl = $('<h4>');
+  var crewEl = $('<p>');
+  crewTagEl.text("Crew:");
+  crewEl.text("launch.crew");
+
+  var payloadTagEl = $('<h4>');
+  var payloadEl = $('<p>');
+  payloadTagEl.text("Payload Customers:");
+  payloadEl.text("launch.payloadCustomers");
+
+  
+
+  mainContainerEl.append(countDownEl);
+  mainContainerEl.append(countDownTimerEl);
+  mainContainerEl.append(descriptionTagEl);
+  mainContainerEl.append(descriptionEl);
+  mainContainerEl.append(launchDateTagEl);
+  mainContainerEl.append(launchDateEl);
+  mainContainerEl.append(crewTagEl);
+  mainContainerEl.append(crewEl);
+  mainContainerEl.append(payloadTagEl);
+  mainContainerEl.append(payloadEl);
+
 }
 
 
