@@ -21,6 +21,51 @@
     <section id="container">
         <div class="row">
             <div class="col s12">
+                <!-- Sidenav start -->
+                <ul id="slide-out" class="sidenav">
+                    <li>
+                        <div class="user-view">
+                            <div class="background grey lighten-1">
+                                <img id="nasa" src="./assets/images/pngwing.com.png">
+                            </div>
+                            <img>
+                            <span class="black-text name">NASA Dock</span>
+                            <span class="black-text name">Some fun information for you!</span>
+                        </div>
+                    </li>
+                    <li><a>NASA's Image of the day</a></li>
+                    <li>
+                        <div class="nasa-image"></div>
+                    </li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a>Mars Weather Report</a></li>
+                    <li>
+                        <div class="mars-weather"></div>
+                    </li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a>Elon's Roadster</a></li>
+                    <li>
+                        <div class="roadster"></div>
+                    </li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a>People in space right now</a></li>
+                    <li>
+                        <div class="people-in-space"></div>
+                    </li>
+                </ul>
+                <div class="col s2 offset-s10">
+                    <div class="fixed-action-button">
+                        <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large blue"><i
+                                class="large material-icons"></i></a>
+                    </div>
+                </div>
+                <!-- Sidenav end -->
                 <ul class="tabs hoverable indigo darken-4" id="tabs">
                     <li class="tab col s4"><a href="#past"><span class="grey-text text-lighten-5">Past</span></a></li>
                     <li class="tab col s4"><a class="active" href="#current"><span
@@ -31,13 +76,15 @@
                 </ul>
             </div>
 
+
+
             <div class="conatiner">
                 <div id="past" class="col s12">
                     <div class="row">
                         <div class="col s6 offset-s3" id="content-card">
                             <div class="card red darken-3">
                                 <div id="past-launch-info" class="card-content white-text">
-                                    <span class="card-title">Past Card Title</span>
+                                    <span class="card-title">Last Launch</span>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +97,7 @@
                         <div class="col s6 offset-s3">
                             <div class="card green darken-3">
                                 <div id="current-launch-info" class="card-content white-text launch-info">
-                                    <span class="card-title">Current Card Title</span>
+                                    <span class="card-title">Upcoming Launch</span>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +109,7 @@
                     <div class="col s6 offset-s3">
                         <div id="future-launch-info" class="card light-blue darken-3">
                             <div class="card-content white-text launch-info">
-                                <span class="card-title">Future Card Title</span>
+                                <span class="card-title">Next Launch</span>
                             </div>
                         </div>
                     </div>
@@ -80,6 +127,23 @@
             M.Tabs.init(tabs, {
                 swipeable: true,
                 duration: 300
+            });
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sideNav = document.querySelectorAll('.sidenav');
+            M.Sidenav.init(sideNav, {
+                edge: "right",
+                duration: 300
+            });
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sideBtn = document.querySelectorAll('.fixed-action-btn');
+            M.FloatingActionButton.init(sideBtn, {
+                direction: "right"
             });
         })
     </script>
