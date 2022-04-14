@@ -13,15 +13,12 @@
 
 html {
     background-color: var(--night-primary);
-    /* background-image: url("../images/milkyway.jpg");
-    background-repeat: no-repeat;
-    background-size: cover; */
+
 }
 
 header {
     background-color: var(--night-primary);
     color: #e5e5e5;
-    /* background-image: url("../images/milkyway.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 15px;
@@ -33,7 +30,6 @@ body {
     text-align: center;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    /* background-image: url("../images/milkyway.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -54,9 +50,6 @@ h1 {
     padding-bottom: 5px;
 }
 
-/* .nav-button {
-    margin-bottom: 20px;
-} */
 
 .switch label input[type=checkbox]:checked+.lever:after {
     background-color: red;
@@ -87,6 +80,12 @@ h1 {
     background-color: var(--tab-secondary);
 
 }
+
+.switch label input[type=checkbox]:checked + .lever {
+ 
+    background-color: var(--night-secondary);
+   
+  }
 
 .bg-image {
     background-image: url("../images/milkyway.jpg");
