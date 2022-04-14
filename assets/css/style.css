@@ -21,10 +21,9 @@ html {
 header {
     background-color: var(--night-primary);
     color: #e5e5e5;
-    /* background-image: url("../images/milkyway.jpg"); */
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 15px;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    font-family: 'Black Ops One', cursive;
 }
 
 body {
@@ -86,8 +85,16 @@ h1 {
 .switch label .lever:after {
     background-color: var(--tab-secondary);
 
+#previous{
+    background-color:rgba(255,0,0,0.5);
+    border-radius:20px ;
+}
+#upcoming{
+    background-color:rgba(0,255,0,0.5);
+    border-radius:20px ;
+}
+#next{
+    background-color:rgba(0,0,255,0.5);
+    border-radius:20px ;
 }
 
-.bg-image {
-    background-image: url("../images/milkyway.jpg");
-}
