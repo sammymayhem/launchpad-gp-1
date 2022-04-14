@@ -44,6 +44,7 @@ function getLaunchApi() {
       replaceCrewIDWithName();
       replacePayloadIDWithName();
 
+
       renderLaunchData("past");
       renderLaunchData("current")
       renderLaunchData("future")
@@ -114,7 +115,7 @@ function renderLaunchData(elemID){
   var countDownEl = $('<h2>');
   var countDownTimerEl = $('<p>');
   countDownEl.text("Count Down To Launch:");
-  countDownTimerEl.text(launchInfo.launchDate);
+  startCountDown(countDownTimerEl, launchInfo.launchDate);
 
   var descriptionTagEl = $('<h4>');
   var descriptionEl = $('<p>');
@@ -124,7 +125,7 @@ function renderLaunchData(elemID){
   var launchDateTagEl = $('<h4>');
   var launchDateEl = $('<p>');
   launchDateTagEl.text("Launch Date:");
-  launchDateEl.text(launchInfo.launchDate);
+  launchDateEl.text(moment(launchInfo.launchDate, "X").format('lll') + " (local)");
 
   var crewTagEl = $('<h4>');
   var crewEl = $('<p>');
@@ -148,7 +149,20 @@ function renderLaunchData(elemID){
   mainContainerEl.append(payloadEl);
 }
 
+function startCountDown(element, launchDate) {
+  
+  var then = moment.unix(launchDate)
+
+  setInterval(function() {
+    var now = moment();
+    var diff = then.diff(now);
+    var dur = moment.duration(diff);
+    var s = Math.floor(dur.asHours()) + " : " + String(Math.abs(Math.floor(dur.asMinutes())%60)).padStart(2, '0') + " : " + String(Math.abs(Math.floor(dur.asSeconds())%60)).padStart(2, '0');
+
+    element.text(s);
+
+  }, 1000);
+}
+
 var currentMoment = moment().unix();
 getLaunchApi();
-
-
