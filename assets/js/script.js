@@ -42,12 +42,10 @@ function getLaunchApi() {
       }
 
       replaceCrewIDWithName();
-      replacePayloadIDWithName();
+      
 
 
-      renderLaunchData("past");
-      renderLaunchData("current")
-      renderLaunchData("future")
+      
     });
 }
 
@@ -75,6 +73,9 @@ function replaceCrewIDWithName() {
         var name = data.find(o => o.id === launches.future.crew[i]).name;
         launches.future.crew[i] = name;
       }
+
+      replacePayloadIDWithName();
+
     });
 }
 
@@ -102,6 +103,10 @@ function replacePayloadIDWithName() {
         var name = data.find(o => o.id === launches.future.payloadCustomers[i]).name;
         launches.future.payloadCustomers[i] = name;
       }
+
+      renderLaunchData("past");
+      renderLaunchData("current")
+      renderLaunchData("future")
     });
 }
 
@@ -114,7 +119,13 @@ function renderLaunchData(elemID){
   
   var countDownEl = $('<h2>');
   var countDownTimerEl = $('<p>');
-  countDownEl.text("Count Down To Launch:");
+  if (elemID === "past") {
+    countDownEl.text("Time Since Launch:");
+  }
+  else{
+    countDownEl.text("Count Down To Launch:");
+  }
+  
   startCountDown(countDownTimerEl, launchInfo.launchDate);
 
   var descriptionTagEl = $('<h4>');
@@ -128,9 +139,22 @@ function renderLaunchData(elemID){
   launchDateEl.text(moment(launchInfo.launchDate, "X").format('lll') + " (local)");
 
   var crewTagEl = $('<h4>');
-  var crewEl = $('<p>');
+  var crewEl = $('<div>');
   crewTagEl.text("Crew:");
-  crewEl.text(launchInfo.crew.join('\n'));
+  console.log(launchInfo.crew.join('\n'));
+
+  if (launchInfo.crew.length === 0) {
+    var crewMemberEl = $('<p>');
+    crewMemberEl.text("UNMANNED");
+    crewEl.append(crewMemberEl);
+  }
+  else{
+    for (var i = 0; i < launchInfo.crew.length; i++){
+      var crewMemberEl = $('<p>');
+      crewMemberEl.text(launchInfo.crew[i]);
+      crewEl.append(crewMemberEl);
+    }
+  }
 
   var payloadTagEl = $('<h4>');
   var payloadEl = $('<p>');
