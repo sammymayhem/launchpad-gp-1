@@ -42,10 +42,6 @@ function getLaunchApi() {
       }
 
       replaceCrewIDWithName();
-      
-
-
-      
     });
 }
 
@@ -114,8 +110,6 @@ function renderLaunchData(elemID){
   var mainContainerEl = $('#' + elemID + '-launch-info');
 
   var launchInfo = launches[elemID];
-
-  console.log(launchInfo);
   
   var countDownEl = $('<h4>');
   var countDownTimerEl = $('<p>');
@@ -141,7 +135,6 @@ function renderLaunchData(elemID){
   var crewTagEl = $('<h4>');
   var crewEl = $('<div>');
   crewTagEl.text("Crew:");
-  console.log(launchInfo.crew.join('\n'));
 
   if (launchInfo.crew.length === 0) {
     var crewMemberEl = $('<p>');
@@ -190,3 +183,42 @@ function startCountDown(element, launchDate) {
 
 var currentMoment = moment().unix();
 getLaunchApi();
+
+var button = $('#bg-switch-button');
+var backgroundimg = $('.bg-image');
+
+
+var backgroundState = localStorage.getItem("bgState");
+
+debugger;
+
+if (backgroundState === null) {
+  backgroundState = false;
+}
+
+debugger;
+
+button.prop('checked', backgroundState);
+setBackgroundImg(backgroundimg, backgroundState);
+
+debugger;
+
+button.on("change", function(){
+  debugger;
+  var state = $(this).prop('checked');
+  debugger;
+  localStorage.setItem("bgState", state);
+  debugger;
+  setBackgroundImg(backgroundimg, state);
+  debugger;
+});
+
+
+function setBackgroundImg(bgElem, state){
+  if (state){
+    bgElem.css("background-image", "url(assets/images/rocket2.jpg)");
+  } 
+  else{
+    bgElem.css("background-image", "url(assets/images/milkyway.jpg)");
+  }
+}
