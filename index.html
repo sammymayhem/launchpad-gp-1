@@ -29,7 +29,7 @@
                         <h1>SpaceX LaunchPad</h1>
                     </div>
                     <!-- Sidenav start -->
-                    <ul id="slide-out" class="sidenav">
+                    <ul id="slide-out" class="sidenav custom-bg-color">
                         <li>
                             <div class="user-view">
                                 <div class="background grey lighten-1">
@@ -37,12 +37,23 @@
                                 </div>
                                 <img>
                                 <span class="black-text name">NASA Dock</span>
-                                <span class="black-text name">Some fun information for you!</span>
+                                <span class="black-text name">NASA's Image of the day:</span>
                             </div>
                         </li>
-                        <li>NASA's Image of the day</li>
+                        <li>Date</li>
                         <li>
-                            <div class="nasa-image"></div>
+                            <div class="nasa-image"><a class="waves-effect waves-light modal-trigger"
+                                    href="#modal1"><img id="img-today"
+                                        src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/hubble_gnz7q_illustration.png"></a>
+                            </div>
+
+                        </li>
+                        <li>Yesterdays Date</li>
+                        <li>
+                            <div class="nasa-image"><a class="waves-effect waves-light modal-trigger"
+                                    href="#modal2"><img id="img-yesterday"
+                                        src="https://apod.nasa.gov/apod/image/2204/M_96_LRGB_CDK_1000_8April2022HansonSelbyFinal1024.jpg"></a>
+                            </div>
                         </li>
                     </ul>
                     <div class="col s2">
@@ -108,10 +119,19 @@
             </div>
         </div>
     </div>
+
+    <div id="modal1" class="modal custom-bg-color">
+        <div class="modal-content">
+            <img id="img-today"
+                src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/hubble_gnz7q_illustration.png">
+        </div>
     </div>
-    </section>
-
-
+    <div id="modal2" class="modal custom-bg-color">
+        <div class="modal-content">
+            <img id="img-today"
+                src="https://apod.nasa.gov/apod/image/2204/M_96_LRGB_CDK_1000_8April2022HansonSelbyFinal1024.jpg">
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
@@ -137,6 +157,15 @@
             var sideBtn = document.querySelectorAll('.fixed-action-btn');
             M.FloatingActionButton.init(sideBtn, {
                 direction: "right"
+            });
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.querySelectorAll('.modal');
+            M.Modal.init(modal, {
+                opacity: 0.5,
+                dismissable: true
             });
         })
     </script>

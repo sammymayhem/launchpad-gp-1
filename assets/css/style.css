@@ -50,6 +50,9 @@ h1 {
     padding-bottom: 5px;
 }
 
+img {
+    width: 95%;
+}
 
 .switch label input[type=checkbox]:checked+.lever:after {
     background-color: red;
@@ -75,7 +78,6 @@ h1 {
     margin: 0 16px;
 }
 
-
 .switch label .lever:after {
     background-color: var(--tab-secondary);
 
@@ -89,4 +91,12 @@ h1 {
 
 .bg-image {
     background-image: url("../images/milkyway.jpg");
+}
+
+.custom-bg-color {
+    background-color: var(--night-primary) !important;
+}
+
+.modal {
+    background-size: cover;
 }
