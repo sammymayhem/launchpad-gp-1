@@ -14,15 +14,13 @@
 
 <body>
     <header>
-        <div class="header">
-            <h1>SpaceX LaunchPad</h1>
-        </div>
-    </header>
-
-    <section id="container">
         <div class="row">
-            <div class="col s12">
-                <!-- Sidenav start -->
+            <div class="header col s10">
+                <h1>SpaceX LaunchPad</h1>
+            </div>
+
+            <!-- Sidenav start -->
+            <div class=" col s2">
                 <ul id="slide-out" class="sidenav">
                     <li>
                         <div class="user-view">
@@ -60,13 +58,21 @@
                         <div class="people-in-space"></div>
                     </li>
                 </ul>
-                <div class="col s2 offset-s10">
-                    <div class="fixed-action-button nav-button">
-                        <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large blue"><i
-                                class="large material-icons">public</i></a>
-                    </div>
-                </div>
-                <!-- Sidenav end -->
+            </div>
+        </div>
+        <div class="col s2 offset-s10">
+            <div class="fixed-action-button nav-button">
+                <a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large blue"><i
+                        class="large material-icons">public</i></a>
+            </div>
+        </div>
+        <!-- Sidenav end -->
+    </header>
+
+    <section id="container">
+        <div class="row">
+            <div class="col s12" id="top-nav">
+
                 <ul class="tabs hoverable indigo darken-4" id="tabs">
                     <li class="tab col s4"><a href="#past"><span class="grey-text text-lighten-5">Past</span></a></li>
                     <li class="tab col s4"><a class="active" href="#current"><span
