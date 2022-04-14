@@ -125,7 +125,7 @@ function renderLaunchData(elemID){
   var launchDateTagEl = $('<h4>');
   var launchDateEl = $('<p>');
   launchDateTagEl.text("Launch Date:");
-  launchDateEl.text(launchInfo.launchDate);
+  launchDateEl.text(moment(launchInfo.launchDate, "X").format('lll') + " (local)");
 
   var crewTagEl = $('<h4>');
   var crewEl = $('<p>');
@@ -153,16 +153,11 @@ function startCountDown(element, launchDate) {
   
   var then = moment.unix(launchDate)
 
-
-  //console.log(Math.floor(dur.asHours()) + " " + (Math.floor(dur.asMinutes())%60) + " " + (Math.floor(dur.asSeconds())%60));
-
-  // Sets interval in variable
   setInterval(function() {
     var now = moment();
     var diff = then.diff(now);
     var dur = moment.duration(diff);
-    var s = Math.floor(dur.asHours()) + moment.utc(diff).format(":mm:ss");
-    //var s = Math.floor(dur.asHours()) + ":" + Math.floor(dur.asMinutes()) + ":" + Math.floor(dur.asSeconds());
+    var s = Math.floor(dur.asHours()) + " : " + String(Math.abs(Math.floor(dur.asMinutes())%60)).padStart(2, '0') + " : " + String(Math.abs(Math.floor(dur.asSeconds())%60)).padStart(2, '0');
 
     element.text(s);
 
@@ -171,7 +166,3 @@ function startCountDown(element, launchDate) {
 
 var currentMoment = moment().unix();
 getLaunchApi();
-
-// console.log("then:" + then);
-// console.log("now:" + now);
-// console.log("dif:" + diff);
