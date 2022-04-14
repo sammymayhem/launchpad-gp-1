@@ -11,19 +11,20 @@
     padding: 0;
 }
 
-html{
+html {
     background-color: var(--night-primary);
-    background-image: url("../images/milkyway.jpg");
-    background-repeat: no-repeat; 
-    background-size: cover;  
+    /* background-image: url("../images/milkyway.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 header {
     background-color: var(--night-primary);
     color: #e5e5e5;
-    background-image: url("../images/milkyway.jpg");
-    background-repeat: no-repeat; 
-    background-size: cover;  
+    /* background-image: url("../images/milkyway.jpg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 15px;
 }
 
 body {
@@ -32,11 +33,15 @@ body {
     text-align: center;
     font-size: 16px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-image: url("../images/milkyway.jpg");
+    /* background-image: url("../images/milkyway.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-   }
+}
+
+h1 {
+    margin: 0;
+}
 
 .tabs-content {
     height: 700px;
@@ -49,9 +54,40 @@ body {
     padding-bottom: 5px;
 }
 
-.nav-button {
+/* .nav-button {
     margin-bottom: 20px;
+} */
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: red;
+
+}
+
+.switch label {
+    color: var(--night-secondary);
+}
+
+.switch label .lever {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 36px;
+    height: 14px;
+    background-color: var(--night-secondary);
+    border-radius: 15px;
+    margin-right: 10px;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
 }
 
 
+.switch label .lever:after {
+    background-color: var(--tab-secondary);
 
+}
+
+.bg-image {
+    background-image: url("../images/milkyway.jpg");
+}
