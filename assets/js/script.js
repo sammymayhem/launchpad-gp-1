@@ -117,7 +117,7 @@ function renderLaunchData(elemID){
 
   console.log(launchInfo);
   
-  var countDownEl = $('<h2>');
+  var countDownEl = $('<h4>');
   var countDownTimerEl = $('<p>');
   if (elemID === "past") {
     countDownEl.text("Time Since Launch:");
