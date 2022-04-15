@@ -181,39 +181,6 @@ function startCountDown(element, launchDate) {
   }, 1000);
 }
 
-var currentMoment = moment().unix();
-getLaunchApi();
-
-var button = $('#bg-switch-button');
-var backgroundimg = $('.bg-image');
-
-
-var backgroundState = localStorage.getItem("bgState");
-
-debugger;
-
-if (backgroundState === null) {
-  backgroundState = false;
-}
-
-debugger;
-
-button.prop('checked', backgroundState);
-setBackgroundImg(backgroundimg, backgroundState);
-
-debugger;
-
-button.on("change", function(){
-  debugger;
-  var state = $(this).prop('checked');
-  debugger;
-  localStorage.setItem("bgState", state);
-  debugger;
-  setBackgroundImg(backgroundimg, state);
-  debugger;
-});
-
-
 function setBackgroundImg(bgElem, state){
   if (state){
     bgElem.css("background-image", "url(assets/images/rocket2.jpg)");
@@ -222,3 +189,24 @@ function setBackgroundImg(bgElem, state){
     bgElem.css("background-image", "url(assets/images/milkyway.jpg)");
   }
 }
+
+var currentMoment = moment().unix();
+getLaunchApi();
+
+var button = $('#bg-switch-button');
+var backgroundimg = $('.bg-image');
+
+var backgroundState = JSON.parse(localStorage.getItem("bgState"));
+
+if (backgroundState === null) {
+  backgroundState = false;
+}
+
+button.prop('checked', backgroundState);
+setBackgroundImg(backgroundimg, backgroundState);
+
+button.on("change", function(){
+  var state = $(this).prop('checked');
+  localStorage.setItem("bgState", state);
+  setBackgroundImg(backgroundimg, state);
+});
