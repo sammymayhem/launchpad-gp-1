@@ -128,3 +128,7 @@ img {
 .modal {
     background-size: cover;
 }
+
+.custom-margin{
+    margin:0 !important;
+}
