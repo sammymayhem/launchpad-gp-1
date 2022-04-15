@@ -18,11 +18,8 @@ html {
 }
 
 header {
-    background-color: var(--night-primary);
     color: #e5e5e5;
     padding-top: 15px;
-    background-repeat: no-repeat;
-    background-size: cover;
     font-family: 'Black Ops One', cursive;
 }
 
@@ -121,6 +118,7 @@ img {
 /* Adjusting background images and bg holder for toggle */
 .bg-image {
     background-image: url("../images/milkyway.jpg");
+    background-position: right bottom;
 }
 
 .custom-bg-color {
