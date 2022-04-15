@@ -1,6 +1,7 @@
 var launchAPIURL = 'https://api.spacexdata.com/v4/launches';
 var payloadAPIURL = 'https://api.spacexdata.com/v4/payloads';
 var crewAPIURL = 'https://api.spacexdata.com/v4/crew';
+var nasaAPODURL = 'https://api.nasa.gov/planetary/apod?api_key=py57IzyGVvqWhA4eZ4r3dX4dLx2eRV1JbInR5nlB'
 
 var launches = {
   past: null,
@@ -19,6 +20,20 @@ function launch(description, launchDate, crew, payloadCustomers){
   this.launchDate = launchDate;
   this.crew = crew;
   this.payloadCustomers = payloadCustomers;
+}
+
+function getNasaAPODApi() {
+  var fullURL = nasaAPODURL + "&start_date=" + moment().subtract(1, 'day').format("YYYY-MM-DD")
+  fetch(fullURL)
+    .then(function (response) {
+      if (response.status !== 200) {
+        console.log("Check response status!");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      renderAPODs(data);
+    });
 }
 
 function getLaunchApi() {
@@ -104,6 +119,13 @@ function replacePayloadIDWithName() {
       renderLaunchData("current")
       renderLaunchData("future")
     });
+}
+
+function renderAPODs(data){
+  var todayImgEl = $('.img-today');
+  var yesterdayImgEl = $('.img-yesterday');
+  todayImgEl.attr('src', data[1].url);
+  yesterdayImgEl.attr('src', data[0].url);
 }
 
 function renderLaunchData(elemID){
@@ -192,6 +214,7 @@ function setBackgroundImg(bgElem, state){
 
 var currentMoment = moment().unix();
 getLaunchApi();
+getNasaAPODApi();
 
 var button = $('#bg-switch-button');
 var backgroundimg = $('.bg-image');
