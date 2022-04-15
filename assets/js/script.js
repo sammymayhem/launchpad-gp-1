@@ -122,12 +122,10 @@ function replacePayloadIDWithName() {
 }
 
 function renderAPODs(data){
-  for (var i = data.length-1; i >= 0; i--){
-    var date = data[i].date;
-    var url = data[i].url
-    console.log(date);
-    console.log(url);
-  }
+  var todayImgEl = $('.img-today');
+  var yesterdayImgEl = $('.img-yesterday');
+  todayImgEl.attr('src', data[1].url);
+  yesterdayImgEl.attr('src', data[0].url);
 }
 
 function renderLaunchData(elemID){
