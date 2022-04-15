@@ -57,10 +57,6 @@ function getLaunchApi() {
       }
 
       replaceCrewIDWithName();
-      
-
-
-      
     });
 }
 
@@ -138,8 +134,6 @@ function renderLaunchData(elemID){
   var mainContainerEl = $('#' + elemID + '-launch-info');
 
   var launchInfo = launches[elemID];
-
-  console.log(launchInfo);
   
   var countDownEl = $('<h4>');
   var countDownTimerEl = $('<p>');
@@ -165,7 +159,6 @@ function renderLaunchData(elemID){
   var crewTagEl = $('<h4>');
   var crewEl = $('<div>');
   crewTagEl.text("Crew:");
-  console.log(launchInfo.crew.join('\n'));
 
   if (launchInfo.crew.length === 0) {
     var crewMemberEl = $('<p>');
