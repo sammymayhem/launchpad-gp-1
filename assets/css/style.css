@@ -13,15 +13,16 @@
 
 html {
     background-color: var(--night-primary);
-
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header {
     background-color: var(--night-primary);
     color: #e5e5e5;
     padding-top: 15px;
-    background-repeat: no-repeat; 
-    background-size: cover; 
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'Black Ops One', cursive;
 }
 
@@ -40,6 +41,7 @@ h1 {
     margin: 0;
 }
 
+/* Styling for tabs */
 .tabs-content {
     height: 700px;
 }
@@ -51,10 +53,34 @@ h1 {
     padding-bottom: 5px;
 }
 
+#previous {
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+#upcoming {
+    background-color: rgba(0, 255, 0, 0.5);
+    border-radius: 20px;
+}
+
+#next {
+    background-color: rgba(0, 0, 255, 0.5);
+    border-radius: 20px;
+}
+
+.user-view {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+li {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 img {
     width: 95%;
 }
 
+/* Styling for toggle switch */
 .switch label input[type=checkbox]:checked+.lever:after {
     background-color: red;
 
@@ -62,6 +88,7 @@ img {
 
 .switch label {
     color: var(--night-secondary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .switch label .lever {
@@ -81,26 +108,17 @@ img {
 
 .switch label .lever:after {
     background-color: var(--tab-secondary);
-
-#previous{
-    background-color:rgba(255,0,0,0.5);
-    border-radius:20px ;
-}
-#upcoming{
-    background-color:rgba(0,255,0,0.5);
-    border-radius:20px ;
-}
-#next{
-    background-color:rgba(0,0,255,0.5);
-    border-radius:20px ;
 }
 
-.switch label input[type=checkbox]:checked + .lever {
- 
+
+
+.switch label input[type=checkbox]:checked+.lever {
+
     background-color: var(--night-secondary);
-   
-  }
 
+}
+
+/* Adjusting background images and bg holder for toggle */
 .bg-image {
     background-image: url("../images/milkyway.jpg");
 }
@@ -112,4 +130,3 @@ img {
 .modal {
     background-size: cover;
 }
-
