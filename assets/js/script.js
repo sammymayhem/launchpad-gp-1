@@ -183,7 +183,7 @@ function startCountDown(element, launchDate) {
 
 function setBackgroundImg(bgElem, state){
   if (state){
-    bgElem.css("background-image", "url(assets/images/rocket2.jpg)");
+    bgElem.css("background-image", "url(assets/images/rocket.jpg)");
   } 
   else{
     bgElem.css("background-image", "url(assets/images/milkyway.jpg)");
