@@ -212,10 +212,6 @@ function startCountDown(element, launchDate) {
   }, 1000);
 }
 
-<<<<<<< Updated upstream
-var currentMoment = moment().unix();
-getLaunchApi();
-=======
 function setBackgroundImg(bgElem, state){
   if (state){
     bgElem.css("background-image", "url(assets/images/rocket.jpg)");
@@ -246,4 +242,3 @@ button.on("change", function(){
   localStorage.setItem("bgState", state);
   setBackgroundImg(backgroundimg, state);
 });
->>>>>>> Stashed changes
