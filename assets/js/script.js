@@ -1,6 +1,7 @@
 var launchAPIURL = 'https://api.spacexdata.com/v4/launches';
 var payloadAPIURL = 'https://api.spacexdata.com/v4/payloads';
 var crewAPIURL = 'https://api.spacexdata.com/v4/crew';
+var nasaAPODURL = 'https://api.nasa.gov/planetary/apod?api_key=py57IzyGVvqWhA4eZ4r3dX4dLx2eRV1JbInR5nlB'
 
 var launches = {
   past: null,
@@ -19,6 +20,20 @@ function launch(description, launchDate, crew, payloadCustomers){
   this.launchDate = launchDate;
   this.crew = crew;
   this.payloadCustomers = payloadCustomers;
+}
+
+function getNasaAPODApi() {
+  var fullURL = nasaAPODURL + "&start_date=" + moment().subtract(1, 'day').format("YYYY-MM-DD")
+  fetch(fullURL)
+    .then(function (response) {
+      if (response.status !== 200) {
+        console.log("Check response status!");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      renderAPODs(data);
+    });
 }
 
 function getLaunchApi() {
@@ -110,6 +125,15 @@ function replacePayloadIDWithName() {
     });
 }
 
+function renderAPODs(data){
+  for (var i = data.length-1; i >= 0; i--){
+    var date = data[i].date;
+    var url = data[i].url
+    console.log(date);
+    console.log(url);
+  }
+}
+
 function renderLaunchData(elemID){
   var mainContainerEl = $('#' + elemID + '-launch-info');
 
@@ -188,5 +212,38 @@ function startCountDown(element, launchDate) {
   }, 1000);
 }
 
+<<<<<<< Updated upstream
 var currentMoment = moment().unix();
 getLaunchApi();
+=======
+function setBackgroundImg(bgElem, state){
+  if (state){
+    bgElem.css("background-image", "url(assets/images/rocket.jpg)");
+  } 
+  else{
+    bgElem.css("background-image", "url(assets/images/milkyway.jpg)");
+  }
+}
+
+var currentMoment = moment().unix();
+getLaunchApi();
+getNasaAPODApi();
+
+var button = $('#bg-switch-button');
+var backgroundimg = $('.bg-image');
+
+var backgroundState = JSON.parse(localStorage.getItem("bgState"));
+
+if (backgroundState === null) {
+  backgroundState = false;
+}
+
+button.prop('checked', backgroundState);
+setBackgroundImg(backgroundimg, backgroundState);
+
+button.on("change", function(){
+  var state = $(this).prop('checked');
+  localStorage.setItem("bgState", state);
+  setBackgroundImg(backgroundimg, state);
+});
+>>>>>>> Stashed changes
