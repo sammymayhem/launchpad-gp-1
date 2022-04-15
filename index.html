@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black Ops One">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>LaunchPad SpaceX Rocket Watch</title>
 </head>
@@ -36,9 +36,10 @@
                         <li>
                             <div class="user-view">
                                 <div class="background grey lighten-1">
-                                    <img id="nasa" src="./assets/images/pngwing.com.png">
+                                    <img alt="NASA logo" id="nasa" src="./assets/images/pngwing.com.png">
                                 </div>
-                                <img>
+                                <!-- This spot needs to be figured out. <img> tag is here for spacing in the sidenav -->
+                                <img alt="Place holder for spacing on sidenav">
                                 <span class="black-text name">NASA Dock</span>
                                 <span class="black-text name">NASA's Image of the day:</span>
                             </div>
@@ -74,6 +75,7 @@
         </section>
     </header>
     <!-- Tabs for launch cards -->
+    <!-- Looking into whether we need to container each row for Materialize. Threw an error in validation of HTML -->
     <div id="container">
         <div class="row">
             <ul class="tabs hoverable indigo darken-4" id="tabs">
@@ -82,50 +84,43 @@
                             class="grey-text text-lighten-5">Current</span></a></li>
                 <li class="tab col s4"><a href="#future"><span class="grey-text text-lighten-5">Future</span></a>
                 </li>
-                <div class="indicator grey lighten-5" style="z-index: 1;"></div>
             </ul>
         </div>
     </div>
     <!-- Last launch card -->
-            <div class="container">
-                <div id="past" class="col s12">
-                    <div class="row">
-                        <div class="col s6 offset-s3">
-                            <div id= "previous"  class="card">
-                                <div id="past-launch-info" class="card-content white-text launch-info" >
-                                </div>
-                            </div>
+    <div class="container">
+        <div id="past" class="col s12">
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    <div id="previous" class="card">
+                        <div id="past-launch-info" class="card-content white-text launch-info">
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Current launch card -->
     <div class="container">
         <div id="current" class="col s12">
             <div class="row">
-                        <div class="col s6 offset-s3">
-                            <div id= "upcoming" class="card">
-                                <div id="current-launch-info" class="card-content white-text launch-info">
-                                </div>
-                            </div>
+                <div class="col s6 offset-s3">
+                    <div id="upcoming" class="card">
+                        <div id="current-launch-info" class="card-content white-text launch-info">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Next launch card -->
-            <div class="container">
-                <div id="future" class="col s12  m4">
-                    <div class="row">
-                        <div class="col s6 offset-s3">
-                            <div id= "next" class="card">
-                                <div id="future-launch-info" class="card-content white-text launch-info">
-                                </div>
-                            </div>
+    <div class="container">
+        <div id="future" class="col s12  m4">
+            <div class="row">
+                <div class="col s6 offset-s3">
+                    <div id="next" class="card">
+                        <div id="future-launch-info" class="card-content white-text launch-info">
                         </div>
                     </div>
                 </div>
@@ -135,14 +130,14 @@
     <!-- Modal for todays NASA image -->
     <div id="modal1" class="modal custom-bg-color">
         <div class="modal-content">
-            <img class="img-today"
+            <img alt="Todays NASA image of the day" class="img-today"
                 src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/hubble_gnz7q_illustration.png">
         </div>
     </div>
     <!-- Modal for yesterdays NASA image -->
     <div id="modal2" class="modal custom-bg-color">
         <div class="modal-content">
-            <img class="img-yesterday"
+            <img alt="Yesterdays NASA image of the day" class="img-yesterday"
                 src="https://apod.nasa.gov/apod/image/2204/M_96_LRGB_CDK_1000_8April2022HansonSelbyFinal1024.jpg">
         </div>
     </div>
@@ -154,10 +149,10 @@
                 <p>Made possible by:</p>
             </div>
             <div id="spacex-logo" class="col s1">
-                <img src="./assets/images/spacex-logo.png">
+                <img alt="SpaceX logo" src="./assets/images/spacex-logo.png">
             </div>
             <div id="nasa-logo" class="col s1">
-                <img src="./assets/images/pngwing.com.png">
+                <img alt="NASA logo" src="./assets/images/pngwing.com.png">
             </div>
         </div>
     </div>
@@ -206,7 +201,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
