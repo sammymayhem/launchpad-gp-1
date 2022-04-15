@@ -42,10 +42,6 @@ function getLaunchApi() {
       }
 
       replaceCrewIDWithName();
-      
-
-
-      
     });
 }
 
@@ -114,8 +110,6 @@ function renderLaunchData(elemID){
   var mainContainerEl = $('#' + elemID + '-launch-info');
 
   var launchInfo = launches[elemID];
-
-  console.log(launchInfo);
   
   var countDownEl = $('<h4>');
   var countDownTimerEl = $('<p>');
@@ -141,7 +135,6 @@ function renderLaunchData(elemID){
   var crewTagEl = $('<h4>');
   var crewEl = $('<div>');
   crewTagEl.text("Crew:");
-  console.log(launchInfo.crew.join('\n'));
 
   if (launchInfo.crew.length === 0) {
     var crewMemberEl = $('<p>');
@@ -188,5 +181,32 @@ function startCountDown(element, launchDate) {
   }, 1000);
 }
 
+function setBackgroundImg(bgElem, state){
+  if (state){
+    bgElem.css("background-image", "url(assets/images/rocket2.jpg)");
+  } 
+  else{
+    bgElem.css("background-image", "url(assets/images/milkyway.jpg)");
+  }
+}
+
 var currentMoment = moment().unix();
 getLaunchApi();
+
+var button = $('#bg-switch-button');
+var backgroundimg = $('.bg-image');
+
+var backgroundState = JSON.parse(localStorage.getItem("bgState"));
+
+if (backgroundState === null) {
+  backgroundState = false;
+}
+
+button.prop('checked', backgroundState);
+setBackgroundImg(backgroundimg, backgroundState);
+
+button.on("change", function(){
+  var state = $(this).prop('checked');
+  localStorage.setItem("bgState", state);
+  setBackgroundImg(backgroundimg, state);
+});
