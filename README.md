@@ -5,7 +5,7 @@ Welcome to the Launchpad SpaceX Rocket Watch! Buckle up because you are in for o
 
 We wanted to be able to provide a sleek dashboard for you to keep up on SpaceX launches and challenge ourselves to deliver a product unlike any we have made so far. I think we have learned a lot as a team and grew as upcoming developers. 
 
-## Deployed Site
+## Deployed Link
 
 https://sammymayhem.github.io/launchpad-gp-1/
 
