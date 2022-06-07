@@ -3,12 +3,14 @@ var payloadAPIURL = 'https://api.spacexdata.com/v4/payloads';
 var crewAPIURL = 'https://api.spacexdata.com/v4/crew';
 var nasaAPODURL = 'https://api.nasa.gov/planetary/apod?api_key=py57IzyGVvqWhA4eZ4r3dX4dLx2eRV1JbInR5nlB'
 
+// global object to hold past current and future launches
 var launches = {
   past: null,
   current: null,
   future: null,
 }
 
+// holds info pertaining to each launch
 function launch(description, launchDate, crew, payloadCustomers){
   if (description === null){
     this.description = "CONFIDENTIAL";
@@ -22,6 +24,7 @@ function launch(description, launchDate, crew, payloadCustomers){
   this.payloadCustomers = payloadCustomers;
 }
 
+// grabs nasa picture of the day
 function getNasaAPODApi() {
   var fullURL = nasaAPODURL + "&start_date=" + moment().subtract(1, 'day').format("YYYY-MM-DD")
   fetch(fullURL)
@@ -36,6 +39,7 @@ function getNasaAPODApi() {
     });
 }
 
+// grabs spacex launch info
 function getLaunchApi() {
   fetch(launchAPIURL)
     .then(function (response) {
@@ -45,7 +49,8 @@ function getLaunchApi() {
       return response.json();
     })
     .then(function (data) {
-
+      
+      // data is not returned in chronological order. must be sorted chronologically to search for past, current, future
       data.sort(function(a, b){return a.date_unix - b.date_unix});
 
       for (var i = 0; i < data.length-2; i++){
@@ -56,10 +61,13 @@ function getLaunchApi() {
         }
       }
 
+      // launch data returns crew ids.... not their names. must do separate api call to get 
+      // crew name given their id
       replaceCrewIDWithName();
     });
 }
 
+// calls spacex crew api
 function replaceCrewIDWithName() {
   fetch(crewAPIURL)
     .then(function (response) {
@@ -70,6 +78,7 @@ function replaceCrewIDWithName() {
     })
     .then(function (data) {
       
+      // grabs crew name given crew id, replaces crew name property
       for (var i = 0; i < launches.past.crew.length; i++){
         var name = data.find(o => o.id === launches.past.crew[i]).name;
         launches.past.crew[i] = name;
@@ -85,11 +94,13 @@ function replaceCrewIDWithName() {
         launches.future.crew[i] = name;
       }
 
+      // launch data returns payload ids.... not their names. must do separate api call to get 
+      // payload name given their id
       replacePayloadIDWithName();
-
     });
 }
 
+// calls spacex payload api
 function replacePayloadIDWithName() {
   fetch(payloadAPIURL)
     .then(function (response) {
@@ -100,6 +111,7 @@ function replacePayloadIDWithName() {
     })
     .then(function (data) {
       
+      // grabs payload name given payload id, replaces payload name property
       for (var i = 0; i < launches.past.payloadCustomers.length; i++){
         var name = data.find(o => o.id === launches.past.payloadCustomers[i]).name;
         launches.past.payloadCustomers[i] = name;
@@ -115,12 +127,14 @@ function replacePayloadIDWithName() {
         launches.future.payloadCustomers[i] = name;
       }
 
+      // renders relevant data to carousel cards specified by id
       renderLaunchData("past");
       renderLaunchData("current")
       renderLaunchData("future")
     });
 }
 
+// grabs image elements, changes their src attribute to current picture of day
 function renderAPODs(data){
   var todayImgEl = $('.img-today');
   var yesterdayImgEl = $('.img-yesterday');
@@ -128,6 +142,7 @@ function renderAPODs(data){
   yesterdayImgEl.attr('src', data[0].url);
 }
 
+// renders relevant data for each card
 function renderLaunchData(elemID){
   var mainContainerEl = $('#' + elemID + '-launch-info');
 
@@ -188,8 +203,8 @@ function renderLaunchData(elemID){
   mainContainerEl.append(payloadEl);
 }
 
+// starts a countdown timer on each element
 function startCountDown(element, launchDate) {
-  
   var then = moment.unix(launchDate)
 
   setInterval(function() {
@@ -203,6 +218,7 @@ function startCountDown(element, launchDate) {
   }, 1000);
 }
 
+// used for flipping background picture according to toggle switch
 function setBackgroundImg(bgElem, state){
   if (state){
     bgElem.css("background-image", "url(assets/images/rocket.jpg)");
@@ -212,13 +228,18 @@ function setBackgroundImg(bgElem, state){
   }
 }
 
+// grab current moment to use for countdown timers
 var currentMoment = moment().unix();
+
+// starts fetching spacex api data and running chain of functions
 getLaunchApi();
+
+// grabs nasa pictures of the day and renders to sidenav
 getNasaAPODApi();
 
+// handles toggle button state, switching background image, and setting local storage
 var button = $('#bg-switch-button');
 var backgroundimg = $('.bg-image');
-
 var backgroundState = JSON.parse(localStorage.getItem("bgState"));
 
 if (backgroundState === null) {
